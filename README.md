@@ -3,15 +3,18 @@ This project is a complete solution to **Challenge 1b** of the **Adobe India Hac
 
 ## Projects Structure
 adobe-hackathon-challenge1b-master/
-│
+
 ├── Collection_1/
+
 │   ├── PDFs/                         
 │   ├── challenge1b_input.json       
 │   └── challenge1b_output.json      
 ├── Collection_2/                    
 ├── Collection_3/                    
 ├── Scripts/
-│   └── approach_explanation.md     
+
+│   ├── approach_explanation.md 
+     
 ├── run_analysis.py                 
 ├── Dockerfile                       
 ├── requirements.txt                  
