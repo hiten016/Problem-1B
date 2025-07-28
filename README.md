@@ -1,20 +1,20 @@
 # Problem-1B- Persona Based outputs 
 This project is a complete solution to **Challenge 1b** of the **Adobe India Hackathon 2025**. It processes a collection of PDFs and extracts structured, semantically relevant sections based on a **persona** and a **specific task**. The output is a well-defined JSON file meeting all format and compute constraints.
 
+## Projects Structure
 adobe-hackathon-challenge1b-master/
 ├── Collection_1/
-│ ├── PDFs/
-│ ├── challenge1b_input.json
-│ └── challenge1b_output.json 
+│   ├── PDFs/
+│   ├── challenge1b_input.json
+│   └── challenge1b_output.json 
 ├── Collection_2/
 ├── Collection_3/
 ├── Scripts/
-│ └── approach_explanation.md
-├── run_analysis.py 
-├── Dockerfile 
-├── requirements.txt 
-└── README.md 
-
+│   └── approach_explanation.md
+├── run_analysis.py
+├── Dockerfile
+├── requirements.txt
+└── README.md
 
 ---
 
@@ -104,7 +104,7 @@ python run_analysis.py Collection_1 --top_k 15
 
 
 
-### Satisfied Constraints
+## Satisfied Constraints
 
  Output JSON follows required schema  
  Execution limited to CPU only       
@@ -114,3 +114,8 @@ python run_analysis.py Collection_1 --top_k 15
  Works with 8 CPU cores, 16GB RAM     
  Portable via Docker (amd64 platform) 
 
+## Contributors: 
+Team Quantum Quarks LNMIIT Jaipur <br>
+Hiten Mahajan <br> 
+Pratyaksh Agrawal <br>
+Sakash Srivastava <br>
