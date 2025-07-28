@@ -2,8 +2,21 @@
 This project is a complete solution to **Challenge 1b** of the **Adobe India Hackathon 2025**. It processes a collection of PDFs and extracts structured, semantically relevant sections based on a **persona** and a **specific task**. The output is a well-defined JSON file meeting all format and compute constraints.
 
 ## Projects Structure
-<pre lang="text"><code>```text adobe-hackathon-challenge1b-master/ ├── Collection_1/ │ ├── PDFs/ │ ├── challenge1b_input.json │ └── challenge1b_output.json ├── Collection_2/ ├── Collection_3/ ├── Scripts/ │ └── approach_explanation.md ├── run_analysis.py ├── Dockerfile ├── requirements.txt └── README.md ```</code></pre>
----
+adobe-hackathon-challenge1b-master/
+│
+├── Collection_1/
+│   ├── PDFs/                         
+│   ├── challenge1b_input.json       
+│   └── challenge1b_output.json      
+├── Collection_2/                    
+├── Collection_3/                    
+├── Scripts/
+│   └── approach_explanation.md     
+├── run_analysis.py                 
+├── Dockerfile                       
+├── requirements.txt                  
+└── README.md                        
+
 
 ##  Problem Statement
 
