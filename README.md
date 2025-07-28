@@ -93,10 +93,10 @@ python run_analysis.py Collection_1 --top_k 15
 
 ```
 ## Docker Setup
-# Build Docker image
+### Build Docker image
 docker build --platform linux/amd64 -t pdf-analyzer-1b .
 
-# Run the container on Collection_1
+### Run the container on Collection_1
 docker run --rm \
 -v $(pwd)/Collection_1:/app/Collection_1:rw \
 --network none pdf-analyzer-1b \
