@@ -9,8 +9,6 @@ from tqdm import tqdm
 from transformers import T5ForConditionalGeneration, T5Tokenizer
 import torch
 
-# --- 1. CONFIGURATION & MODEL LOADING ---
-
 # Load the semantic search model for ranking chunks
 print("Loading semantic search model (all-MiniLM-L6-v2)...")
 ranking_model = SentenceTransformer('all-MiniLM-L6-v2')
@@ -20,8 +18,6 @@ ranking_model = SentenceTransformer('all-MiniLM-L6-v2')
 print("Loading title generation model (google/flan-t5-base)...")
 title_tokenizer = T5Tokenizer.from_pretrained("google/flan-t5-base")
 title_model = T5ForConditionalGeneration.from_pretrained("google/flan-t5-base")
-
-# --- 2. CORE FUNCTIONS ---
 
 def load_input(path):
     """Loads the input JSON configuration file."""
@@ -44,7 +40,7 @@ def extract_sections_from_pdf(pdf_path):
                                 "content": para.strip().replace('\n', ' ') # Normalize newlines within a para
                             })
     except Exception as e:
-        print(f"❌ Error reading {pdf_path}: {e}")
+        print(f" Error reading {pdf_path}: {e}")
     return sections
 
 def filter_chunks_by_keywords(sections, forbidden_keywords):
@@ -92,7 +88,7 @@ def generate_title_with_llm(content):
     except Exception as e:
         print(f"Error generating title: {e}")
         # Fallback to a simpler heuristic if LLM fails
-        return content.strip().split('\n')[0][:80] # First line, max 80 chars
+        return content.strip().split('\n')[0][:80] 
 
 
 def build_output(input_data, ranked_sections, top_k):
@@ -141,12 +137,9 @@ def build_output(input_data, ranked_sections, top_k):
         
     return output
 
-
-# --- 3. MAIN ORCHESTRATOR ---
-
 def main():
     """Main function to run the analysis pipeline."""
-    # --- Argument Parsing ---
+    # Parsing
     parser = argparse.ArgumentParser(description="Process a document collection based on a persona and task.")
     parser.add_argument('collection_dir', type=str, help='The path to the collection directory (e.g., ./Collection_1/)')
     parser.add_argument('--top_k', type=int, default=15, help='Number of top results to return.')
@@ -158,17 +151,15 @@ def main():
     pdf_dir = os.path.join(collection_path, 'PDFs')
 
     if not os.path.isdir(collection_path):
-        print(f"❌ Error: Directory not found at '{collection_path}'")
+        print(f" Error: Directory not found at '{collection_path}'")
         return
 
-    # --- Load input and define task ---
     input_data = load_input(input_json_path)
     task = input_data["job_to_be_done"]["task"]
     challenge_id = input_data.get("challenge_info", {}).get("challenge_id")
     print(f"\n🚀 Starting analysis for Challenge: {challenge_id}...")
     print(f"Task: {task}")
-    
-    # --- Global Extraction: Get all chunks from all PDFs ---
+
     all_sections = []
     print("\n[Step 1/4] Extracting text from all PDF documents...")
     for doc in tqdm(input_data["documents"], desc="Parsing PDFs"):
@@ -179,14 +170,14 @@ def main():
                 section['filename'] = doc["filename"] # Tag each chunk with its source
             all_sections.extend(sections)
         else:
-            print(f"⚠️ Warning: PDF file not found at {pdf_path}")
+            print(f" Warning: PDF file not found at {pdf_path}")
 
     if not all_sections:
-        print("❌ No content could be extracted from any PDF. Exiting.")
+        print(" No content could be extracted from any PDF. Exiting.")
         return
     print(f"✅ Extracted {len(all_sections)} total text chunks.")
 
-    # --- Conditional Filtering (for Recipe Challenge) ---
+    # For Recipe Dataset
     print("\n[Step 2/4] Applying filters...")
     if challenge_id == "round_1b_001":
         print("   -> Applying 'vegetarian' keyword filter for recipe challenge.")
@@ -196,18 +187,18 @@ def main():
     else:
         print("   -> No special filters applied for this challenge.")
 
-    # --- Global Ranking ---
+
     print("\n[Step 3/4] Ranking all chunks against the task...")
     globally_ranked_sections = rank_sections(all_sections, task, ranking_model)
     print("✅ Ranking complete.")
 
-    # --- Build and Save Final Output ---
+    #output
     print("\n[Step 4/4] Building final output file...")
     output = build_output(input_data, globally_ranked_sections, top_k=args.top_k)
 
     with open(output_json_path, 'w', encoding='utf-8') as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
-    print(f"\n🎉 Success! Final analysis saved to {output_json_path}")
+    print(f"\n Success! Final analysis saved to {output_json_path}")
 
 
 if __name__ == "__main__":
