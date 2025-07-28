@@ -48,8 +48,8 @@ We use a **two-stage semantic retrieval and summarization pipeline** to achieve 
 - We extract each page's content and split it into paragraph-like chunks.
 - Only non-trivial text sections (>50 characters) are retained.
 
-### 🔹 2. **Stage 1: Keyword-Based Filtering (optional)**
--  We filter out text chunks containing forbidden terms like `"meat"`, `"chicken"`, etc., using substring matching.
+### 🔹 2. **Stage 1: Keyword-Based Filtering (Optional)**
+-  We filter out text chunks containing terms like `"meat"`, `"chicken"`, etc., using substring matching.
 
 ### 🔹 3. **Stage 2: Semantic Similarity Ranking**
 - Tool: [`all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
