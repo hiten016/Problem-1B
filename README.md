@@ -3,22 +3,25 @@ This project is a complete solution to **Challenge 1b** of the **Adobe India Hac
 
 ## Projects Structure
 adobe1b-master/
-
 ├── Collection_1/
-
-│   ├── PDFs/                         
-│   ├── challenge1b_input.json       
-│   └── challenge1b_output.json      
-├── Collection_2/                    
-├── Collection_3/                    
+│   ├── PDFs/
+│   ├── challenge1b_input.json
+│   └── challenge1b_output.json
+├── Collection_2/
+│   ├── PDFs/
+│   ├── challenge1b_input.json
+│   └── challenge1b_output.json
+├── Collection_3/
+│   ├── PDFs/
+│   ├── challenge1b_input.json
+│   └── challenge1b_output.json
 ├── Scripts/
-
-│   ├── approach_explanation.md 
-     
-├── run_analysis.py                 
-├── Dockerfile                       
-├── requirements.txt                  
-└── README.md                        
+│   └── approach_explanation.md
+├── run_analysis.py
+├── Dockerfile
+├── requirements.txt
+└── README.md
+                    
 
 
 ##  Problem Statement
