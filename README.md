@@ -102,38 +102,15 @@ docker run --rm \
 --network none pdf-analyzer-1b \
 python run_analysis.py Collection_1 --top_k 15
 
-### Expected output Format
-{
-  "metadata": {
-    "input_documents": ["SampleDoc.pdf"],
-    "persona": "Nutritionist",
-    "job_to_be_done": "Find vegetarian recipes suitable for diabetic patients",
-    "processing_timestamp": "2025-07-28T13:45:30"
-  },
-  "extracted_sections": [
-    {
-      "document": "SampleDoc.pdf",
-      "section_title": "Chickpea Salad",
-      "importance_rank": 1,
-      "page_number": 4
-    }
-  ],
-  "subsection_analysis": [
-    {
-      "document": "SampleDoc.pdf",
-      "refined_text": "Chickpeas are rich in fiber and ideal for diabetic diets...",
-      "page_number": 4
-    }
-  ]
-}
+
 
 ### Satisfied Constraints
 
-| Output JSON follows required schema  
-| Execution limited to CPU only       
-| Total model size ≤ **1 GB**        
-| Completion time ≤ 60s (3–5 PDFs)    
-| No internet access during runtime    
-| Works with 8 CPU cores, 16GB RAM     
-| Portable via Docker (amd64 platform) 
+ Output JSON follows required schema  
+ Execution limited to CPU only       
+ Total model size ≤ **1 GB**        
+ Completion time ≤ 60s (3–5 PDFs)    
+ No internet access during runtime    
+ Works with 8 CPU cores, 16GB RAM     
+ Portable via Docker (amd64 platform) 
 
