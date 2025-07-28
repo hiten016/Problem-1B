@@ -46,7 +46,7 @@ We use a **two-stage semantic retrieval and summarization pipeline** to achieve 
 - Only non-trivial text sections (>50 characters) are retained.
 
 ### 🔹 2. **Stage 1: Keyword-Based Filtering (optional)**
-- If required by the challenge (e.g., `round_1b_001`), we filter out text chunks containing forbidden terms like `"meat"`, `"chicken"`, etc., using substring matching.
+-  We filter out text chunks containing forbidden terms like `"meat"`, `"chicken"`, etc., using substring matching.
 
 ### 🔹 3. **Stage 2: Semantic Similarity Ranking**
 - Tool: [`all-MiniLM-L6-v2`](https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2)
