@@ -18,7 +18,7 @@ adobe-hackathon-challenge1b-master/
 
 ---
 
-## 🎯 Problem Statement
+##  Problem Statement
 
 You are given:
 - A directory of PDFs
@@ -36,7 +36,7 @@ You must:
 
 ---
 
-## 🚀 Approach Overview
+##  Approach Overview
 
 We use a **two-stage semantic retrieval and summarization pipeline** to achieve this:
 
@@ -72,9 +72,9 @@ We use a **two-stage semantic retrieval and summarization pipeline** to achieve 
 
 ---
 
-## 🖥️ Setup & Run Instructions
+## Setup & Run Instructions
 
-### 🔧 Local Python Setup
+### Local Python Setup
 
 ```bash
 # Step 1: Clone repository
@@ -92,7 +92,7 @@ pip install -r requirements.txt
 python run_analysis.py Collection_1 --top_k 15
 
 ```
-### Docker Setup
+## Docker Setup
 # Build Docker image
 docker build --platform linux/amd64 -t pdf-analyzer-1b .
 
